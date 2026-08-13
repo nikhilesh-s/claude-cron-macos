@@ -1,0 +1,34 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	objectVersion = 56;
+	objects = {
+		1 = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = ClaudeCron.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2 = {isa = PBXGroup; children = (3,4,5,6,7,8,9,10); path = ClaudeCron; sourceTree = "<group>"; };
+		3 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeCronApp.swift; sourceTree = "<group>"; };
+		4 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronManager.swift; sourceTree = "<group>"; };
+		6 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaudeSubmitter.swift; sourceTree = "<group>"; };
+		7 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityManager.swift; sourceTree = "<group>"; };
+		8 = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduledTime.swift; sourceTree = "<group>"; };
+		9 = {isa = PBXGroup; children = (8); path = Models; sourceTree = "<group>"; };
+		10 = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		11 = {isa = PBXGroup; children = (2,12); sourceTree = "<group>"; };
+		12 = {isa = PBXGroup; children = (1); name = Products; path = Products; sourceTree = "<group>"; };
+		13 = {isa = PBXBuildFile; fileRef = 3; };
+		14 = {isa = PBXBuildFile; fileRef = 4; };
+		15 = {isa = PBXBuildFile; fileRef = 5; };
+		16 = {isa = PBXBuildFile; fileRef = 6; };
+		17 = {isa = PBXBuildFile; fileRef = 7; };
+		18 = {isa = PBXBuildFile; fileRef = 8; };
+		19 = {isa = PBXSourcesBuildPhase; files = (13,14,15,16,17,18); };
+		20 = {isa = PBXFrameworksBuildPhase; files = (); };
+		21 = {isa = PBXResourcesBuildPhase; files = (); };
+		22 = {isa = PBXNativeTarget; buildPhases = (19,20,21); buildRules = (); dependencies = (); name = ClaudeCron; productName = ClaudeCron; productReference = 1; productType = "com.apple.product-type.application"; };
+		23 = {isa = PBXProject; attributes = { LastUpgradeCheck = 1500; }; buildConfigurationList = 24; compatibilityVersion = "Xcode 14.0"; mainGroup = 11; productRefGroup = 12; projectDirPath = ""; projectRoot = ""; targets = (22); };
+		24 = {isa = XCConfigurationList; buildConfigurations = (25,26); defaultConfigurationIsVisible = 0; defaultConfigurationName = Release; };
+		25 = {isa = XCBuildConfiguration; buildSettings = { MACOSX_DEPLOYMENT_TARGET = 13.0; PRODUCT_BUNDLE_IDENTIFIER = com.local.ClaudeCron; PRODUCT_NAME = "Claude Cron"; SWIFT_VERSION = 5.0; SDKROOT = macosx; INFOPLIST_KEY_LSUIElement = NO; }; name = Debug; };
+		26 = {isa = XCBuildConfiguration; buildSettings = { MACOSX_DEPLOYMENT_TARGET = 13.0; PRODUCT_BUNDLE_IDENTIFIER = com.local.ClaudeCron; PRODUCT_NAME = "Claude Cron"; SWIFT_VERSION = 5.0; SDKROOT = macosx; INFOPLIST_KEY_LSUIElement = NO; }; name = Release; };
+	};
+	rootObject = 23;
+}
