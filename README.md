@@ -1,32 +1,37 @@
 # Claude Cron
 
-Small native macOS SwiftUI utility for daily recurring Claude prompt submissions. It stores schedules in the user's existing crontab and preserves unrelated jobs.
+Native macOS SwiftUI utility that schedules recurring prompts for the Claude desktop app using cron. It stores schedules in your existing crontab and leaves unrelated jobs alone.
 
-## Build without Xcode
+## How it works
 
-The included native AppKit fallback builds with the macOS Command Line Tools:
+Each schedule is a daily crontab line that launches the installed app with `--submit-now`. The app then activates Claude, waits one second, checks that Claude is frontmost, and presses Return.
+
+Schedules are read from crontab on every launch. Removing a schedule removes only Claude Cron entries.
+
+## Requirements
+
+- macOS 13 or later
+- Xcode (SwiftUI version) or the Command Line Tools (AppKit fallback)
+
+## Build
+
+SwiftUI version: open `ClaudeCron.xcodeproj` in Xcode and run, or archive and copy the app to `/Applications`.
+
+AppKit fallback, no Xcode needed:
 
 ```bash
-mkdir -p "build/Claude Cron.app/Contents/MacOS"
-clang -fobjc-arc ClaudeCron/ClaudeCronFallback.m \
-  -o "build/Claude Cron.app/Contents/MacOS/Claude Cron" \
-  -framework Cocoa -framework ApplicationServices -mmacosx-version-min=13.0
-```
-
-Then add the `Info.plist` from the existing build bundle and run:
-
-```bash
+scripts/build-fallback.sh
 cp -R "build/Claude Cron.app" /Applications/
 open -a "Claude Cron"
 ```
 
-`ClaudeCron.xcodeproj` contains the SwiftUI source version for use on a machine with Xcode.
+## Permissions
 
-## Install and run
+Grant Claude Cron access under **System Settings > Privacy & Security > Accessibility**. Without it the app cannot press Return in Claude.
 
-Copy the built `ClaudeCron.app` to `/Applications`, launch it, and grant Claude Cron access under **System Settings → Privacy & Security → Accessibility**. The app's scheduled cron entries launch the installed app with `--submit-now`; the app then activates Claude, waits one second, verifies Claude is frontmost, and presses Return.
+## Standalone script
 
-The included `scripts/submit-claude.sh` is a standalone equivalent and can be installed with:
+`scripts/submit-claude.sh` runs the same `--submit-now` call without the window:
 
 ```bash
 mkdir -p "$HOME/Library/Application Support/ClaudeCron"
@@ -34,4 +39,10 @@ cp scripts/submit-claude.sh "$HOME/Library/Application Support/ClaudeCron/submit
 chmod +x "$HOME/Library/Application Support/ClaudeCron/submit-claude.sh"
 ```
 
-Schedules are daily and are read from crontab on every launch. Removing a schedule only removes Claude Cron entries; unrelated crontab lines remain intact.
+## Status
+
+No screenshot yet. The SwiftUI project has not been built in this environment (no Xcode installed); the fallback source compiles with `clang`.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
